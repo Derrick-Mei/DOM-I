@@ -1,102 +1,112 @@
 const siteContent = {
-  "nav": {
-    "nav-item-1": "Services",
-    "nav-item-2": "Product",
-    "nav-item-3": "Vision",
-    "nav-item-4": "Features",
-    "nav-item-5": "About",
-    "nav-item-6": "Contact",
-    "img-src": "img/logo.png"
-  },
-  "cta": {
-    "h1": "DOM Is Awesome",
-    "button": "Get Started",
-    "img-src": "img/header-img.png"
-  },
-  "main-content": {
-    "features-h4":"Features",
-    "features-content": "Features content elementum magna eros, ac posuere elvit tempus et. Suspendisse vel tempus odio, in interdutm nisi. Suspendisse eu ornare nisl. Nullam convallis augue justo, at imperdiet metus scelerisque quis.",
-    "about-h4":"About",
-    "about-content": "About content elementum magna eros, ac posuere elvit tempus et. Suspendisse vel tempus odio, in interdutm nisi. Suspendisse eu ornare nisl. Nullam convallis augue justo, at imperdiet metus scelerisque quis.",
-    "middle-img-src": "img/mid-page-accent.jpg",
-    "services-h4":"Services",
-    "services-content": "Services content elementum magna eros, ac posuere elvit tempus et. Suspendisse vel tempus odio, in interdutm nisi. Suspendisse eu ornare nisl. Nullam convallis augue justo, at imperdiet metus scelerisque quis.",
-    "product-h4":"Product",
-    "product-content": "Product content elementum magna eros, ac posuere elvit tempus et. Suspendisse vel tempus odio, in interdutm nisi. Suspendisse eu ornare nisl. Nullam convallis augue justo, at imperdiet metus scelerisque quis.",
-    "vision-h4":"Vision",
-    "vision-content": "Vision content elementum magna eros, ac posuere elvit tempus et. Suspendisse vel tempus odio, in interdutm nisi. Suspendisse eu ornare nisl. Nullam convallis augue justo, at imperdiet metus scelerisque quis.",
-  },
-  "contact": {
-    "contact-h4" : "Contact",
-    "address" : "123 Way 456 Street Somewhere, USA",
-    "phone" : "1 (888) 888-8888",
-    "email" : "sales@greatidea.io",
-  },
-  "footer": {
-    "copyright" : "Copyright Great Idea! 2018"
-  },
+    nav: {
+        'nav-item-1': 'Services',
+        'nav-item-2': 'Product',
+        'nav-item-3': 'Vision',
+        'nav-item-4': 'Features',
+        'nav-item-5': 'About',
+        'nav-item-6': 'Contact',
+        'img-src': 'img/logo.png'
+    },
+    cta: {
+        h1: 'DOM Is Awesome',
+        button: 'Get Started',
+        'img-src': 'img/header-img.png'
+    },
+    'main-content': {
+        'features-h4': 'Features',
+        'features-content': 'Features content elementum magna eros, ac posuere elvit tempus et. Suspendisse vel tempus odio, in interdutm nisi. Suspendisse eu ornare nisl. Nullam convallis augue justo, at imperdiet metus scelerisque quis.',
+        'about-h4': 'About',
+        'about-content': 'About content elementum magna eros, ac posuere elvit tempus et. Suspendisse vel tempus odio, in interdutm nisi. Suspendisse eu ornare nisl. Nullam convallis augue justo, at imperdiet metus scelerisque quis.',
+        'middle-img-src': 'img/mid-page-accent.jpg',
+        'services-h4': 'Services',
+        'services-content': 'Services content elementum magna eros, ac posuere elvit tempus et. Suspendisse vel tempus odio, in interdutm nisi. Suspendisse eu ornare nisl. Nullam convallis augue justo, at imperdiet metus scelerisque quis.',
+        'product-h4': 'Product',
+        'product-content': 'Product content elementum magna eros, ac posuere elvit tempus et. Suspendisse vel tempus odio, in interdutm nisi. Suspendisse eu ornare nisl. Nullam convallis augue justo, at imperdiet metus scelerisque quis.',
+        'vision-h4': 'Vision',
+        'vision-content': 'Vision content elementum magna eros, ac posuere elvit tempus et. Suspendisse vel tempus odio, in interdutm nisi. Suspendisse eu ornare nisl. Nullam convallis augue justo, at imperdiet metus scelerisque quis.'
+    },
+    contact: {
+        'contact-h4': 'Contact',
+        address: '123 Way 456 Street Somewhere, USA',
+        phone: '1 (888) 888-8888',
+        email: 'sales@greatidea.io'
+    },
+    footer: {
+        copyright: 'Copyright Great Idea! 2018'
+    }
 };
 
+// HEADER SECTION
+// Example: Update the img src for the logo
+let logo = document.getElementById('logo-img');
+logo.setAttribute('src', siteContent['nav']['img-src']);
 
-//Appending Children
-let nav7 = document.createElement('a');
-let nav8 = document.createElement('a');
+// WORK STARTS HERE
 
-let parent = document.querySelector('nav')
-parent.appendChild(nav7);
-parent.appendChild(nav8);
+// Create elements
+let prependChild = document.createElement('a');
+let appendChild = document.createElement('a');
 
+// select parent
+let nav = document.querySelector('nav');
 
-//navBar
-let navBar = document.querySelectorAll('a');
-var navLinks = Object.values(siteContent.nav);
+// attach children
+nav.prepend(prependChild);
+nav.appendChild(appendChild);
 
-for (let i = 0; i < navBar.length; i++) {
-  navBar[i].innerHTML = navLinks[i]
-  navBar[i].style.color = 'green'}  
+// select a tags
+let aTags = document.querySelectorAll('a');
 
-nav7.innerHTML = 'Prices';
-nav8.innerHTML = 'Login';
+// use forEach to loop over aTag nodelist for textContent and Style
+aTags.forEach((element, index) => {
+    element.textContent = siteContent.nav['nav-item-' + index];
+    element.style.color = 'green';
+});
 
-let logo = document.getElementById("logo-img");
-logo.setAttribute('src', siteContent["nav"]["img-src"]);
+prependChild.textContent = 'Prepend';
+appendChild.textContent = 'Append';
 
+// Header Section
+document.querySelector('.cta h1').textContent = siteContent.cta.h1;
 
-//CTA
-let ctaImg = document.getElementById("cta-img");
-ctaImg.setAttribute('src', siteContent['cta']['img-src']);
+document.querySelector('.cta button').textContent = siteContent.cta.button;
 
-document.querySelector("h1").innerHTML = siteContent.cta.h1;
+document.getElementById('cta-img').src = siteContent.cta['img-src'];
 
-document.querySelector("button").innerHTML = siteContent.cta.button;
+// BODY SECTION
+let { 'features-h4': features, 'features-content': fContent, 'about-h4': about, 'about-content': aContent, 'middle-img-src': middleImgSRC, 'services-h4': services, 'services-content': sContent, 'product-h4': product, 'product-content': pContent, 'vision-h4': vision, 'vision-content': vContent } = siteContent['main-content'];
+console.log(features);
 
+let bodyH4 = document.querySelectorAll('h4');
+bodyH4[0].textContent = features;
+bodyH4[1].textContent = about;
+bodyH4[2].textContent = services;
+bodyH4[3].textContent = product;
+bodyH4[4].textContent = vision;
 
-//Main Content
-let contentTitles = document.querySelectorAll('h4');
-contentTitles[0].innerHTML = siteContent["main-content"]["features-h4"];
-contentTitles[1].innerHTML = siteContent["main-content"]["about-h4"];
-contentTitles[2].innerHTML = siteContent["main-content"]["services-h4"];
-contentTitles[3].innerHTML = siteContent["main-content"]["product-h4"];
-contentTitles[4].innerHTML = siteContent["main-content"]["vision-h4"];
+document.getElementById('middle-img').src = middleImgSRC;
 
-let contentText = document.querySelectorAll("p");
-contentText[0].innerHTML = siteContent["main-content"]["features-content"];
-contentText[1].innerHTML = siteContent["main-content"]["about-content"];
-contentText[2].innerHTML = siteContent["main-content"]["services-content"];
-contentText[3].innerHTML = siteContent["main-content"]["product-content"];
-contentText[4].innerHTML = siteContent["main-content"]["vision-content"];
+let bodyP = document.querySelectorAll('p');
+bodyP[0].textContent = fContent;
+bodyP[1].textContent = aContent;
+bodyP[2].textContent = sContent;
+bodyP[3].textContent = pContent;
+bodyP[4].textContent = vContent;
 
-let middleImg = document.getElementById("middle-img");
-middleImg.setAttribute('src', siteContent['main-content']['middle-img-src']);
+// Contact
+// I could continue to just use the bodyH4 and bodyP nodeList, but I'm going to use more selectors
+let contactH4 = (document.querySelector('.contact h4').textContent = siteContent.contact['contact-h4']);
+let contactP = document.querySelectorAll('.contact p');
 
+let address1 = siteContent.contact.address.substring(0, 18);
+let address2 = siteContent.contact.address.substring(19, 33);
+let newAddress = address1 + "\n" + address2;
 
-//Contact
-contentTitles[5].innerHTML = siteContent["contact"]["contact-h4"];
+contactP[0].textContent = newAddress;
+contactP[1].textContent = siteContent.contact.phone;
+contactP[2].textContent = siteContent.contact.email;
 
-contentText[5].innerHTML = siteContent["contact"]["address"];
-contentText[6].innerHTML = siteContent["contact"]["phone"];
-contentText[7].innerHTML = siteContent["contact"]["email"];
+// FOOTER SECTION
 
-
-//Footer
-contentText[8].innerHTML = siteContent["footer"]["copyright"];
+document.querySelector('footer p').textContent = siteContent.footer.copyright;
