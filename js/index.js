@@ -69,14 +69,14 @@ appendChild.textContent = 'Append';
 
 // Header Section
 document.querySelector('.cta h1').textContent = siteContent.cta.h1;
-
 document.querySelector('.cta button').textContent = siteContent.cta.button;
-
 document.getElementById('cta-img').src = siteContent.cta['img-src'];
 
 // BODY SECTION
+
+// Destructure Object
 let { 'features-h4': features, 'features-content': fContent, 'about-h4': about, 'about-content': aContent, 'middle-img-src': middleImgSRC, 'services-h4': services, 'services-content': sContent, 'product-h4': product, 'product-content': pContent, 'vision-h4': vision, 'vision-content': vContent } = siteContent['main-content'];
-console.log(features);
+// console.log(features);
 
 let bodyH4 = document.querySelectorAll('h4');
 bodyH4[0].textContent = features;
@@ -99,11 +99,23 @@ bodyP[4].textContent = vContent;
 let contactH4 = (document.querySelector('.contact h4').textContent = siteContent.contact['contact-h4']);
 let contactP = document.querySelectorAll('.contact p');
 
+// split address into 2 strings
 let address1 = siteContent.contact.address.substring(0, 18);
 let address2 = siteContent.contact.address.substring(19, 33);
-let newAddress = address1 + "\n" + address2;
 
+// 1. Use white-space css + /n to make line break
+let newAddress = address1 + '\n' + address2;
 contactP[0].textContent = newAddress;
+contactP[0].style.whiteSpace = 'pre';
+
+// 2. Using innerHTML to add a <br/>
+// contactP[0].innerHTML = address1 + "<br/>" + address2;
+
+// 3. Creating a new element and appending it
+// let address2Element = document.createElement('div');
+// address2Element.textContent = address2;
+// contactP[0].appendChild(address2Element);
+
 contactP[1].textContent = siteContent.contact.phone;
 contactP[2].textContent = siteContent.contact.email;
 
